@@ -7,11 +7,11 @@ class Location:
        self.character = None
        self.wepon = None
 
-   # Here is a method to get the description of the :
+   # Here is a method to get the description of the location :
    def get_description(self):
        return self.description
 
-   # Here is a method to set the description of the :
+   # Here is a method to set the description of the location:
    def set_description(self, location_description):
        self.description = location_description
 
@@ -19,11 +19,11 @@ class Location:
    def describe(self):
        print(self.description)
 
-   # Here is a method to get the name of the :
+   # Here is a method to get the name of the location:
    def get_name(self):
        return self.name
 
-   # Here is a method to set the name of the :
+   # Here is a method to set the name of the location:
    def set_name(self, location_name):
        self.name = location_name
 
@@ -46,21 +46,21 @@ class Location:
            print("You can't go that way")
            return self
 
-   # Here is a method to get the character in a :
+   # Here is a method to get the character in a location:
    def get_character(self):
        return self.character
 
-   # Here is a method to set the character in a :
+   # Here is a method to set the character in a location:
    def set_character(self, _character):
        self.character = _character
 
-   # Here is a method to get the wepon in a :
+   # Here is a method to get the wepon in a location:
    def get_wepon(self):
        return self.wepon
 
-   # Here is a method to set the wepon in a :
-   def set_wepon(self, _wepon):
-       self.wepon = _wepon
+   # Here is a method to set the wepon in a location:
+   def set_wepon(self, location_wepon):
+       self.wepon = location_wepon
 
    
 
