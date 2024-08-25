@@ -1,3 +1,4 @@
+
 class wepon:
    def __init__(self, wepon_name):
        self.name = wepon_name

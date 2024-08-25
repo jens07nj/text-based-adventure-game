@@ -11,60 +11,102 @@ saltysprings.set_description("A small town where many battles were fought ")
 
 
 tiltedtowers = Location("tiltedtowers")
-tiltedtowers.set_description("A large city with a ")
+tiltedtowers.set_description("A city with one large tower in the middle")
+
+
 
 
 lootlake = Location("lootlake")
 lootlake.set_description("A small lake with a house in the middle ")
+
+dustydepot = Location("dustydepot")
+dustydepot.set_description("A abandoned depot that got hit by a meteor")
+
+junkjunction = Location ("junkjunction")
+junkjunction.set_description("A old junk yard where rust Lord runs his shop")
+
+pleasantpark = Location ("pleasantpark")
+pleasantpark.set_description("A town surrounding a large soccer feild")
+
+riskyreels = Location ("riskyreels")
+riskyreels.set_description("A drive in theater that hasen't been used for many years")
+
 
 
 saltysprings.link_location(tiltedtowers, "south")
 lootlake.link_location(tiltedtowers, "east")
 tiltedtowers.link_location(lootlake, "west")
 tiltedtowers.link_location(saltysprings, "north")
+tiltedtowers.link_location(dustydepot, "south")
+dustydepot.link_location(tiltedtowers, "north")
+lootlake.link_location(junkjunction, "west")
+junkjunction.link_location(lootlake, "east")
+dustydepot.link_location(pleasantpark, "east")
+pleasantpark.link_location(dustydepot, "west")
+pleasantpark.link_location(riskyreels, "north")
+riskyreels.link_location(pleasantpark, "south")
+riskyreels.link_location(saltysprings, "west")
+saltysprings.link_location(riskyreels,"east")
 
 
 Peely = Enemy("Peely", "a FNCS tourniment winner")
 Peely.set_conversation("battle me for the victory royal you noob, or are you too scared??")
 Peely.set_weakness("pumpshotgun")
-tiltedtowers.set_character(Peely)
+dustydepot.set_character(Peely)
 
 
 brightbomber = Friend("brightbomber", "A friendly bot")
-brightbomber.set_conversation("Gidday")
-lootlake.set_character(brightbomber)
+brightbomber.set_conversation("Gidday, you look lost. if you wanna get this victory royal i suggest finding all the wepons and remebering who to use them on")
+saltysprings.set_character(brightbomber)
+
+fishsticks = Enemy("fishsticks", "A sneaky bot who camps on the top of the island")
+fishsticks.set_weakness("sniper")
+lootlake.set_character(fishsticks)
+
+darknight = Enemy("darknight", "A streamer who loves to snipe but hates smgs")
+darknight.set_weakness("smg")
+pleasantpark.set_character(darknight)
+
+smg = wepon("smg")
+smg.set_description(" rust lord offers it to you, 'you will need it fight fight darknight' he says")
+junkjunction.set_wepon(smg)
 
 
 pumpshotgun = wepon("pumpshotgun")
 pumpshotgun.set_description("Peely's worst nightmare")
 lootlake.set_wepon(pumpshotgun)
 torch = wepon("sniper")
-torch.set_description("great for long distance fights")
-tiltedtowers.set_wepon(torch)
+torch.set_description("great for long distance fights especially bots who camp on roofs")
+riskyreels.set_wepon(torch)
 bag = []
 
+print("****************************************")
+
+print ("        Fortnite Battle royal")
+
+print("****************************************")
+
+
+print("how to play:")
+print("- Move locations by typing: north , south, east or west")
+print("- Interact with characters by typing: talk , dance , fight")
+print("- Add items to your inventory by typing: take")
+print("- eliminate all 3 enemys to win")
+print("")
+print("")
+print("")
 
 
 
-current_Location = saltysprings
+
+
+current_Location = tiltedtowers
 dead = False
 while dead == False:
    print("\n")
 
-   print("****************************************")
-
-   print ("        Fortnite Battle royal")
-
-   print("****************************************")
 
 
-   print("how to play:")
-   print("- Move locations by typing: north , south, east or west")
-   print("- Interact with characters by typing: talk , dance , fight")
-   print("- Add items to your inventory by typing: take")
-   print("")
-   print("")
-   print("")
 
 
    print(f"Currant location: {current_Location.get_name()}")
@@ -82,12 +124,21 @@ while dead == False:
        inhabitant.describe()
 
 
+
    command = input("> ")
+
+
+
+
+
 
 
    if command in ["north", "south", "east", "west"]:
        current_Location = current_Location.move(command)
        print()
+
+
+
 
 
    elif command == "talk":
@@ -104,7 +155,8 @@ while dead == False:
            if fight_with in bag:
                if inhabitant.fight(fight_with) == True:
                    # What happens if you win?
-                   print("Bravo, hero you won the fight!")
+                   print("Bravo, gamer you won the fight!")
+                   print( str(Enemy.enemies_to_defeat)  + " enemys remain")
                    current_Location.set_character(None)
                    if Enemy.enemies_to_defeat == 0:
                        print("**********************************************************")

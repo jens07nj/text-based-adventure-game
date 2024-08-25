@@ -74,7 +74,7 @@ class Enemy(Character):
            Enemy.enemies_to_defeat = Enemy.enemies_to_defeat - 1
            return True
        else:
-           print(self.name + " swallows you, little wimp")
+           print(self.name + " boxes and kills you, little wimp")
            return False
 
 
