@@ -56,14 +56,14 @@ dustydepot.set_character(Peely)
 
 
 brightbomber = Friend("brightbomber", "A friendly bot")
-brightbomber.set_conversation("Gidday, you look lost. if you wanna get this victory royal i suggest finding all the wepons and remebering who to use them on")
+brightbomber.set_conversation("Gidday, you look lost. if you wanna get this victory royal, remember use the pumpshotgun on peely, sniper on fishsticks and smg to kill dark knight")
 saltysprings.set_character(brightbomber)
 
 fishsticks = Enemy("fishsticks", "A sneaky bot who camps on the top of the island")
 fishsticks.set_weakness("sniper")
 lootlake.set_character(fishsticks)
 
-darknight = Enemy("darknight", "A streamer who loves to snipe but hates smgs")
+darknight = Enemy("darknight", "A streamer who loves to snipe")
 darknight.set_weakness("smg")
 pleasantpark.set_character(darknight)
 
@@ -78,7 +78,7 @@ lootlake.set_wepon(pumpshotgun)
 torch = wepon("sniper")
 torch.set_description("great for long distance fights especially bots who camp on roofs")
 riskyreels.set_wepon(torch)
-bag = []
+inventory = []
 
 print("****************************************")
 
@@ -92,7 +92,7 @@ print("- Move locations by typing: north , south, east or west")
 print("- Interact with characters by typing: talk , dance , fight")
 print("- Add items to your inventory by typing: take")
 print("- eliminate all 3 enemys to win")
-print("")
+print("- before you fight anyone, collect wepons and find brightbomber, she has some valuable advice")
 print("")
 print("")
 
@@ -152,7 +152,7 @@ while dead == False:
            # Fight with the inhabitant, if there is one
            print("What will you fight with?")
            fight_with = input()
-           if fight_with in bag:
+           if fight_with in inventory:
                if inhabitant.fight(fight_with) == True:
                    # What happens if you win?
                    print("Bravo, gamer you won the fight!")
@@ -188,7 +188,7 @@ while dead == False:
    elif command == "take":
        if wepon is not None:
            print(wepon.get_name() + " has been added to your inventory")
-           bag.append(wepon.get_name())
+           inventory.append(wepon.get_name())
            current_Location.set_wepon(None)
 
 
